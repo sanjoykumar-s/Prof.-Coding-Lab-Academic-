@@ -45,11 +45,10 @@ public class StudentList {
             System.out.println(Constant.waitingMessage);
             try {
                 String names[] = getString().split(Constant.separator);
-                boolean done = false;
-                for (int id = 0; id < names.length && !done; id++) {
+                for (int id = 0; id < names.length; id++) {
                     if (names[id].trim().equals(args[0].substring(1))) {
                         System.out.println(Constant.foundMessage);
-                        done = true;
+                        break;
                     }
                 }
             } catch (Exception e) {
