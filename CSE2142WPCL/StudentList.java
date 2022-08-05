@@ -57,14 +57,8 @@ public class StudentList {
         } else if (args[0].contains(Constant.countCommand)) {
             System.out.println(Constant.waitingMessage);
             try {
-                char alphabates[] = getString().toCharArray();
-                int count = 0;
-                for (char space : alphabates) {
-                    if (space == Constant.singleSpaceChar) {
-                        count++;
-                    }
-                }
-                System.out.println(count+1 + Constant.countMessage);
+                String names[] = getString().split(Constant.separator);
+                System.out.println(names.length);
             } catch (Exception e) {
             }
             System.out.println(Constant.endMessage);
