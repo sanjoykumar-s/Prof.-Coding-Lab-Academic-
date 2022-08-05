@@ -14,8 +14,7 @@ public class StudentList {
         if (args[0].equals(Constant.displayCommand)) {
             System.out.println(Constant.waitingMessage);
             try {
-                String line = getString();
-                String names[] = line.split(Constant.separator);
+                String names[] = getString().split(Constant.separator);
                 for (String name : names) {
                     System.out.println(name.trim());
                 }
@@ -25,8 +24,7 @@ public class StudentList {
         } else if (args[0].equals(Constant.randomAccessCommand)) {
             System.out.println(Constant.waitingMessage);
             try {
-                String line = getString();
-                String names[] = line.split(Constant.separator);
+                String names[] = getString().split(Constant.separator);
                 int randomIndex = (int) ((Math.random() * ((names.length-1) - 0)));
                 System.out.println(names[randomIndex].trim());
             } catch (Exception e) {
@@ -36,12 +34,8 @@ public class StudentList {
             System.out.println(Constant.waitingMessage);
             try {
                 BufferedWriter bufferedReader = getBufferedWriter();
-                String subStringToAdd = args[0].substring(1);
-                Date date = new Date();
-                String timeFormat = Constant.timeFormat;
-                DateFormat dateFormat = new SimpleDateFormat(timeFormat);
-                String formatedDate = dateFormat.format(date);
-                bufferedReader.write(Constant.separator + Constant.singleSpace + subStringToAdd + Constant.updateMessage + formatedDate);
+                DateFormat dateFormat = new SimpleDateFormat(Constant.timeFormat);
+                bufferedReader.write(Constant.separator + Constant.singleSpace + args[0].substring(1) + Constant.updateMessage + dateFormat.format(new Date()));
                 bufferedReader.close();
             } catch (Exception e) {
             }
@@ -50,12 +44,10 @@ public class StudentList {
         } else if (args[0].contains(Constant.searchCommand)) {
             System.out.println(Constant.waitingMessage);
             try {
-                String line = getString();
-                String names[] = line.split(Constant.separator);
+                String names[] = getString().split(Constant.separator);
                 boolean done = false;
-                String subStringToAdd = args[0].substring(1);
                 for (int id = 0; id < names.length && !done; id++) {
-                    if (names[id].trim().equals(subStringToAdd)) {
+                    if (names[id].trim().equals(args[0].substring(1))) {
                         System.out.println(Constant.foundMessage);
                         done = true;
                     }
@@ -66,8 +58,7 @@ public class StudentList {
         } else if (args[0].contains(Constant.countCommand)) {
             System.out.println(Constant.waitingMessage);
             try {
-                String line = getString();
-                char alphabates[] = line.toCharArray();
+                char alphabates[] = getString().toCharArray();
                 int count = 0;
                 for (char space : alphabates) {
                     if (space == Constant.singleSpaceChar) {
