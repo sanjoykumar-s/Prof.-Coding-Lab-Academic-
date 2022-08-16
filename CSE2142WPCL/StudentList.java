@@ -5,13 +5,14 @@ import java.util.*;
 public class StudentList {
     public static void main(String[] args) {
 
+        //Handling NULL argument
         if(args.length!=1)
         {
             System.out.println(Constant.errorMessage);
             return;
         }
 //		Check arguments
-        if (args[0].equals(Constant.displayCommand)) {
+        if (args[0].equals(Constant.displayCommand)) {   //if command is 'a' Then Display the elements of Students.txt file
             System.out.println(Constant.waitingMessage);
             try {
                 String names[] = getString().split(Constant.separator);
@@ -19,9 +20,10 @@ public class StudentList {
                     System.out.println(name.trim());
                 }
             } catch (Exception e) {
+                System.out.println("File not Found");
             }
             System.out.println(Constant.endMessage);
-        } else if (args[0].equals(Constant.randomAccessCommand)) {
+        } else if (args[0].equals(Constant.randomAccessCommand)) {  // Print Random Students Name
             System.out.println(Constant.waitingMessage);
             try {
                 String names[] = getString().split(Constant.separator);
@@ -30,7 +32,7 @@ public class StudentList {
             } catch (Exception e) {
             }
             System.out.println(Constant.endMessage);
-        } else if (args[0].contains(Constant.addCommand)) {
+        } else if (args[0].contains(Constant.addCommand)) { // Adding Another Name / anything to Students.txt file
             System.out.println(Constant.waitingMessage);
             try {
                 BufferedWriter bufferedReader = getBufferedWriter();
@@ -41,7 +43,7 @@ public class StudentList {
             }
 
             System.out.println(Constant.endMessage);
-        } else if (args[0].contains(Constant.searchCommand)) {
+        } else if (args[0].contains(Constant.searchCommand)) { // Searching any keyword
             System.out.println(Constant.waitingMessage);
             try {
                 String names[] = getString().split(Constant.separator);
@@ -54,7 +56,7 @@ public class StudentList {
             } catch (Exception e) {
             }
             System.out.println(Constant.endMessage);
-        } else if (args[0].contains(Constant.countCommand)) {
+        } else if (args[0].contains(Constant.countCommand)) { // Counting number of Words in Students.txt
             System.out.println(Constant.waitingMessage);
             try {
                 String names[] = getString().split(Constant.separator);
